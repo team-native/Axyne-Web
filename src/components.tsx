@@ -10,7 +10,7 @@ const docGroups = [
   { label: '설계', items: [['메모리 예산', '/docs/memory-budget'], ['렌더링', '/docs/rendering']] },
 ];
 export function Header() {
-  return <header className="site-header"><Link to="/" className="logo" aria-label="Axyne 홈"><img src={mark} width="30" height="30" alt=""/><span>Axyne</span></Link><nav aria-label="주 메뉴" className="site-nav">{nav.map(([text, href]) => <NavLink key={href} to={href}>{text}</NavLink>)}</nav><Link to="/download" className="nav-download">무료 다운로드</Link></header>;
+  return <header className="site-header"><Link to="/" className="logo" aria-label="Axyne 홈"><img src={mark} width="30" height="30" alt=""/><span>Axyne</span></Link><nav aria-label="주 메뉴" className="site-nav">{nav.map(([text, href]) => <NavLink key={href} to={href}>{text}</NavLink>)}</nav></header>;
 }
 export function Footer() { return <footer className="site-footer"><span>© 2026 Axyne</span><span>C · Win32 API · Scintilla</span></footer>; }
 export function DocSidebar() {
