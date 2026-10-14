@@ -1,4 +1,8 @@
 {
+  "name": "axyne-react-animated",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
   "scripts": {
     "dev": "vite --host 127.0.0.1",
     "build": "tsc && vite build",
@@ -9,7 +13,10 @@
     "vite": "latest",
     "react": "latest",
     "react-dom": "latest",
-    "typescript": "latest"
+    "react-router-dom": "latest",
+    "typescript": "latest",
+    "@fontsource/ibm-plex-sans-kr": "latest",
+    "@fontsource/jetbrains-mono": "latest"
   },
   "devDependencies": {
     "@types/react": "latest",
