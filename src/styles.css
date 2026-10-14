@@ -50,6 +50,7 @@ h2[id] { scroll-margin-top: 80px; }
 [data-name="IDE Window"] { transform-origin: center top; transform: rotateX(var(--preview-angle, 0deg)) scale(var(--preview-scale, 1)); box-shadow: 0 30px 90px color-mix(in srgb, var(--accent-default) 22%, transparent); }
 [data-name="Stats"] > div > p:first-child { min-height: 1.5em; font-variant-numeric: tabular-nums; }
 [data-name="Shape"], [data-name="Stacked Bar"] > * { transform-origin: left center; }
+[data-name="Stacked Bar"] { background: var(--bg-track); border-radius: 6px; }
 [data-node-id="25:7658"] { width: 9.55%; }
 [data-node-id="25:7663"] { width: 68.73%; }
 [data-node-id="25:7668"] { width: 99.27%; }
