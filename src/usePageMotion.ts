@@ -61,10 +61,14 @@ export function usePageMotion(route: string) {
         const target = entry.target as HTMLElement;
         const delay = Math.min(3, Array.from(target.parentElement?.children || []).indexOf(target)) * 80;
         if (target.matches('[data-name="Stacked Bar"]')) {
-          Array.from(target.children).forEach((child, index) => {
+          const track = target.getBoundingClientRect();
+          Array.from(target.children).forEach(child => {
             const segment = child as HTMLElement;
+            const bounds = segment.getBoundingClientRect();
+            const duration = 1600 * parseFloat(getComputedStyle(segment).width) / track.width;
+            const delay = 1600 * (bounds.left - track.left) / track.width;
             segment.classList.add('motion-visible');
-            animate(segment, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 240, easing: ease, delay: index * 240, fill: 'backwards' });
+            animate(segment, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration, easing: 'linear', delay, fill: 'backwards' });
           });
         } else if (target.matches('[data-name="Shape"]')) {
           target.classList.add('motion-visible');
