@@ -12,16 +12,16 @@ img { display: block; }
 button, a { -webkit-tap-highlight-color: transparent; }
 a:hover { filter: brightness(.94); }
 a:focus-visible, button:focus-visible { outline: 2px solid var(--text-accent); outline-offset: 4px; }
-h2[id] { scroll-margin-top: 112px; }
+h2[id] { scroll-margin-top: 80px; }
 .app { --bg-page: white; --bg-surface: #f5f5f8; --bg-code: #f8f8fb; --bg-titlebar: #efeff4; --bg-sunken: #efeff4; --bg-chip: #e8e8ee; --bg-track: #e8e8ee; --bg-bar-neutral: #bdb7ad; --bg-accent-subtle: #f1e8fb; --border-default: #e1e1e8; --border-accent: #c9a7ee; --accent-default: #7b22b7; --accent-strong: #7b22b7; --text-strong: #101216; --text-primary: #24262c; --text-secondary: #5b606b; --text-muted: #686d78; --text-accent: #7b22b7; --text-on-accent: white; --text-on-strong: white; --syntax-keyword: #7b22b7; --syntax-comment: #686d78; --syntax-function: #1f6fb2; --syntax-string: #3f7d2a; background: var(--bg-page); color: var(--text-primary); min-height: 100vh; }
-.site-header { display: flex; align-items: center; padding: 24px 80px; gap: 40px; width: 100%; border-bottom: 1px solid var(--border-default); position: sticky; top: 0; z-index: 50; background: white; transition: background 150ms cubic-bezier(.2,0,0,1), box-shadow 150ms; }
+.site-header { display: flex; align-items: center; padding: 12px 80px; gap: 40px; width: 100%; border-bottom: 1px solid var(--border-default); position: sticky; top: 0; z-index: 50; background: white; transition: background 150ms cubic-bezier(.2,0,0,1), box-shadow 150ms; }
 .site-header.scrolled { background: rgb(255 255 255 / 88%); backdrop-filter: blur(12px); box-shadow: 0 1px 8px #10121608; }
 .logo { display: flex; gap: 10px; align-items: center; flex-shrink: 0; margin-right: auto; font-size: 22px; font-weight: 700; color: var(--text-strong); }
 .logo img { border-radius: 8px; }
 .site-nav { display: flex; gap: 36px; font-size: 15px; font-weight: 500; color: var(--text-secondary); }
 .site-nav .active { color: var(--text-accent); }
 .nav-download { padding: 8px 16px; border-radius: 8px; color: var(--text-on-accent); background: var(--accent-default); font-size: 14px; font-weight: 600; white-space: nowrap; }
-.site-footer { display: flex; justify-content: space-between; padding: 32px 80px; border-top: 1px solid var(--border-default); width: 100%; color: var(--text-muted); font-size: 13px; }
+.site-footer { display: flex; justify-content: space-between; align-items: center; padding: 12px 80px; border-top: 1px solid var(--border-default); width: 100%; color: var(--text-muted); font-size: 13px; }
 .site-footer span:last-child { font-family: 'JetBrains Mono', monospace; }
 .doc-sidebar { width: 230px; flex-shrink: 0; display: flex; flex-direction: column; gap: 28px; }
 .doc-mobile-select { display: none; }
@@ -36,8 +36,6 @@ h2[id] { scroll-margin-top: 112px; }
 [data-name^="State /"] { min-height: 100vh; }
 [data-name^="State /"] > [data-name="Content"] { padding: 40px 20px; }
 [data-name="Article"] { min-width: 0; }
-[data-name="On this page"] { position: sticky; top: 112px; }
-[data-name="On this page"] a:hover { text-decoration: underline; }
 [data-name="Page Header"] p, [data-name="Page Header"] h1 { max-width: 100%; white-space: normal; }
 [data-name="Callout"] { justify-content: center; align-items: center; text-align: center; }
 [data-name="Callout"] > p { width: auto; min-width: 0; max-width: 100%; white-space: normal; }
@@ -64,7 +62,6 @@ h2[id] { scroll-margin-top: 112px; }
  [data-name="Product Shot"] { padding-left: 40px; padding-right: 40px; }
  [data-name="IDE Window"] { width: 100%; }
  [data-name="Docs Layout"] { gap: 32px; }
- [data-name="On this page"] { display: none; }
  [data-name="Article"] p { max-width: 100%; }
  [data-name="Bars"] > div > div { flex: 1; }
  [data-name="Next Steps"] { max-width: 100%; }
@@ -76,9 +73,9 @@ h2[id] { scroll-margin-top: 112px; }
 }
 @media (max-width: 800px) {
  .app { --spacing-4xl: 24px; --spacing-5xl: 64px; --spacing-6xl: 64px; }
- .site-header { padding: 18px 24px; gap: 18px; flex-wrap: wrap; }
+ .site-header { padding: 10px 24px; gap: 12px 18px; flex-wrap: wrap; }
  .site-nav { order: 4; width: 100%; justify-content: space-between; gap: 16px; font-size: 14px; }
- .site-footer { padding: 28px 24px; gap: 16px; flex-wrap: wrap; }
+ .site-footer { padding: 10px 24px; gap: 8px 16px; flex-wrap: wrap; }
  [data-name="Page Header"] { padding-top: 64px; padding-bottom: 40px; }
  [data-name="Page Header"] h1 { font-size: 38px; line-height: 1.4; }
  [data-name="Page Header"] p { width: 100%; }

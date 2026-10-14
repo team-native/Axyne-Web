@@ -56,12 +56,6 @@ export default function Rendering() {
             </p>
           </div>
         </div>
-        <div className="design-207" data-node-id="25:6982" data-name="On this page">
-          <p className="design-208" data-node-id="25:6983">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6984">그리기 규칙</a>
-        </div>
       </div>
       <Footer />
     </div>

@@ -59,13 +59,6 @@ export default function Editor() {
             </p>
           </div>
         </div>
-        <div className="design-207" data-node-id="25:6411" data-name="On this page">
-          <p className="design-208" data-node-id="25:6412">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6413">탭의 동작</a>
-          <a href="#section-2" className="design-168" data-node-id="25:6414">내부 동작</a>
-        </div>
       </div>
       <Footer />
     </div>

@@ -31,13 +31,6 @@ export default function Terminal() {
             빌드 결과와 로그가 표시됩니다. 줄 수 상한은 터미널과 같은 방식으로 적용됩니다.
           </p>
         </div>
-        <div className="design-207" data-node-id="25:6554" data-name="On this page">
-          <p className="design-208" data-node-id="25:6555">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6556">터미널</a>
-          <a href="#section-2" className="design-168" data-node-id="25:6557">출력 패널</a>
-        </div>
       </div>
       <Footer />
     </div>

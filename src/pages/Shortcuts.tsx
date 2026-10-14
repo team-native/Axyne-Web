@@ -84,12 +84,6 @@ export default function Shortcuts() {
             </div>
           </div>
         </div>
-        <div className="design-207" data-node-id="25:6820" data-name="On this page">
-          <p className="design-208" data-node-id="25:6821">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6822">기본 단축키</a>
-        </div>
       </div>
       <Footer />
     </div>
