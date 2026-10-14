@@ -1,6 +1,7 @@
-import { Component, useEffect, useState, type ReactNode } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { DownloadNotice, installerUrl } from './components';
+import { Component, useEffect, useState, type ReactNode, type MouseEvent } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
+import { DownloadNotice, startDownload } from './components';
+import { usePageMotion } from './usePageMotion';
 import Home from './pages/Home';
 import Features from './pages/Features';
 import Memory from './pages/Memory';
@@ -27,18 +28,14 @@ class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
 }
 function Site(){
   const location=useLocation();
+  const navigate=useNavigate();
   const [notice,setNotice]=useState(false);
+  const motionRoot=usePageMotion(location.pathname);
   useEffect(()=>{
     document.title='Axyne';
     setNotice(false);
     if(!location.hash) window.scrollTo(0,0);
     else requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView());
-    const portable=location.pathname==='/download'&&new URLSearchParams(location.search).get('platform')==='portable';
-    if(portable&&installerUrl().startsWith('#')) setNotice(true);
-    if((portable||location.pathname.startsWith('/download/complete'))&&!installerUrl().startsWith('#')){
-      const timer=window.setTimeout(()=>{const link=document.createElement('a');link.href=installerUrl();link.download='';link.click();},150);
-      return ()=>window.clearTimeout(timer);
-    }
   },[location.pathname,location.search]);
   useEffect(()=>{
     const show=()=>setNotice(true);
@@ -47,7 +44,19 @@ function Site(){
     window.addEventListener('keydown',escape);
     return ()=>{window.removeEventListener('download-unavailable',show);window.removeEventListener('keydown',escape);};
   },[]);
-  return <div className="app"><Routes>
+  function onDownloadClick(event:MouseEvent<HTMLDivElement>){
+    if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey) return;
+    const link=(event.target as Element).closest<HTMLAnchorElement>('a[href]');
+    if(!link) return;
+    const target=new URL(link.href,window.location.href);
+    if(target.origin!==window.location.origin) return;
+    const platform=target.pathname==='/download/complete'?'windows':target.pathname==='/download/complete/macos'?'macos':target.pathname==='/download'&&target.searchParams.get('platform')==='portable'?'portable':null;
+    if(!platform) return;
+    event.preventDefault();
+    event.stopPropagation();
+    if(startDownload(platform)&&platform!=='portable') navigate(target.pathname);
+  }
+  return <div className="app motion-ready" ref={motionRoot} onClickCapture={onDownloadClick}><div className="scroll-progress" aria-hidden="true"/><Routes>
   <Route path="/" element={<Home/>}/>
 <Route path="/features" element={<Features/>}/>
 <Route path="/memory-budget" element={<Memory/>}/>

@@ -1,6 +1,6 @@
 # Axyne React
 
-Light theme website with 19 pages, centered documentation tips.
+Light theme website with 19 pages, centered documentation tips and animations.
 
 ## Run
 
@@ -16,6 +16,10 @@ Production build: `npm run build`.
 Home `/`, features `/features`, memory `/memory-budget`, download `/download`, Windows completion `/download/complete`, macOS completion `/download/complete/macos`, errors `/404` and `/500`.
 
 Documentation: `/docs`, `/docs/windows`, `/docs/macos`, `/docs/editor`, `/docs/search`, `/docs/terminal`, `/docs/settings`, `/docs/theme`, `/docs/shortcuts`, `/docs/memory-budget`, `/docs/rendering`.
+
+## Motion
+
+Staggered entry, scroll progress, preview perspective, counter animation and expanding memory bars. Reduced-motion preferences disable movement.
 
 ## Downloads
 
