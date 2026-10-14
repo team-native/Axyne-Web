@@ -1,5 +1,6 @@
 import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
 import imgContainer from "../assets/43cf6.svg";
+import imgContainerDark from "../assets/9c07c.svg";
 
 export default function DownloadComplete() {
   return (
@@ -8,7 +9,7 @@ export default function DownloadComplete() {
       <div className="design-141" data-node-id="25:7884" data-name="Content">
         <div className="design-142" data-node-id="25:7885" data-name="Success Icon">
           <div className="design-143" data-node-id="25:7886" data-name="Container">
-            <img alt="" className="design-21" src={imgContainer} />
+            <picture><source media="(prefers-color-scheme: dark)" srcSet={imgContainerDark} /><img alt="" className="design-21" src={imgContainer} /></picture>
           </div>
         </div>
         <h1 className="design-144" data-node-id="25:7888">
