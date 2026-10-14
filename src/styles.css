@@ -35,7 +35,7 @@ h2[id] { scroll-margin-top: 80px; }
 .button.secondary { background: var(--bg-surface); border: 1.5px solid var(--border-default); }
 [data-name^="State /"] { min-height: 100vh; }
 [data-name^="State /"] > [data-name="Content"] { padding: 40px 20px; }
-[data-name="Article"] { min-width: 0; }
+[data-name="Article"] { min-width: 0; overflow: visible; }
 [data-name="Page Header"] p, [data-name="Page Header"] h1 { max-width: 100%; white-space: normal; }
 [data-name="Callout"] { justify-content: center; align-items: center; text-align: center; }
 [data-name="Callout"] > p { width: auto; min-width: 0; max-width: 100%; white-space: normal; }
