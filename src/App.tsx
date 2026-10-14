@@ -56,7 +56,7 @@ function Site(){
     event.stopPropagation();
     if(startDownload(platform)&&platform!=='portable') navigate(target.pathname);
   }
-  return <div className="app" ref={motionRoot} onClickCapture={onDownloadClick}><div className="scroll-progress" aria-hidden="true"/><Routes>
+  return <div className="app motion-ready" ref={motionRoot} onClickCapture={onDownloadClick}><div className="scroll-progress" aria-hidden="true"/><Routes>
   <Route path="/" element={<Home/>}/>
 <Route path="/features" element={<Features/>}/>
 <Route path="/memory-budget" element={<Memory/>}/>

@@ -12,6 +12,11 @@ export function usePageMotion(route: string) {
     const animations = new Set<Animation>();
     const frames = new Set<number>();
     const counters = new Map<HTMLElement, string>();
+    const targets = Array.from(element.querySelectorAll<HTMLElement>(reveals + ', [data-name="Stats"], [data-name="Shape"], [data-name="Stacked Bar"] > *'));
+    targets.forEach(target => {
+      target.classList.remove('motion-visible', 'revealed');
+      if (!target.matches('[data-name="Shape"], [data-name="Stacked Bar"] > *')) target.setAttribute('data-reveal', '');
+    });
     let scrollFrame = 0;
     const progress = element.querySelector<HTMLElement>('.scroll-progress');
     const header = element.querySelector<HTMLElement>('.site-header');
@@ -32,6 +37,7 @@ export function usePageMotion(route: string) {
       if (!number || +number[0] === 0 || preference.matches) return;
       counters.set(target, original);
       const final = +number[0], decimals = number[0].includes('.') ? 1 : 0, start = performance.now();
+      target.textContent = original.replace(number[0], (0).toFixed(decimals));
       function tick(time: number) {
         const fraction = Math.min(1, (time - start) / 1200);
         target.textContent = original.replace(number![0], (final * (1 - Math.pow(1 - fraction, 3))).toFixed(decimals));
@@ -46,16 +52,19 @@ export function usePageMotion(route: string) {
         const target = entry.target as HTMLElement;
         const delay = Math.min(3, Array.from(target.parentElement?.children || []).indexOf(target)) * 80;
         if (target.matches('[data-name="Shape"], [data-name="Stacked Bar"] > *')) {
+          target.classList.add('motion-visible');
           animate(target, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 900, easing: ease, delay, fill: 'backwards' });
         } else if (target.matches('[data-name="Stats"]')) {
           target.querySelectorAll<HTMLElement>(':scope > div > p:first-child').forEach(count);
+          target.classList.add('revealed');
         } else {
-          animate(target, [{ opacity: 0, transform: 'translateY(24px)' }, { opacity: 1, transform: 'translateY(0)' }], { duration: 600, easing: ease, delay, fill: 'backwards' });
+          target.style.transitionDelay = `${delay}ms`;
+          target.classList.add('revealed');
         }
         observer.unobserve(target);
       }
     }, { threshold: .18 });
-    element.querySelectorAll(reveals + ', [data-name="Stats"], [data-name="Shape"], [data-name="Stacked Bar"] > *').forEach(target => observer.observe(target));
+    targets.forEach(target => observer.observe(target));
     function updateScroll() {
       scrollFrame = 0;
       const max = document.documentElement.scrollHeight - innerHeight;
@@ -70,6 +79,7 @@ export function usePageMotion(route: string) {
     function onScroll() { if (!scrollFrame) scrollFrame = requestAnimationFrame(updateScroll); }
     function onPreferenceChange() {
       if (preference.matches) {
+        targets.forEach(target => target.classList.add('motion-visible', 'revealed'));
         animations.forEach(animation => animation.cancel());
         frames.forEach(cancelAnimationFrame);
         counters.forEach((original, target) => { target.textContent = original; });
