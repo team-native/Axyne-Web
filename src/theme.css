@@ -1,0 +1,27 @@
+@media (prefers-color-scheme: dark) {
+  .app {
+    color-scheme: dark;
+    --bg-page: #131417;
+    --bg-surface: #1c1e22;
+    --bg-sunken: #181a1e;
+    --bg-code: #1a1c20;
+    --bg-titlebar: #101216;
+    --bg-chip: #2a2d33;
+    --bg-track: #24262c;
+    --bg-bar-neutral: #4a453f;
+    --bg-accent-subtle: #282038;
+    --accent-default: #a667e8;
+    --border-default: #2a2d33;
+    --border-accent: #5a3c82;
+    --text-strong: #fff;
+    --text-primary: #d5d8dd;
+    --text-secondary: #969ba5;
+    --text-muted: #8a8f9b;
+    --text-accent: #a667e8;
+    --text-on-accent: #131417;
+    --syntax-keyword: #c9a2f7;
+    --syntax-function: #7db5e3;
+    --syntax-string: #a3c98a;
+    --syntax-comment: #8a8f9b;
+  }
+}
