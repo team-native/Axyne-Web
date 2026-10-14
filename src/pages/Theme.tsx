@@ -113,13 +113,6 @@ export default function Theme() {
             </p>
           </div>
         </div>
-        <div className="design-207" data-node-id="25:6738" data-name="On this page">
-          <p className="design-208" data-node-id="25:6739">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6740">색상 토큰</a>
-          <a href="#section-2" className="design-168" data-node-id="25:6741">예시</a>
-        </div>
       </div>
       <Footer />
     </div>

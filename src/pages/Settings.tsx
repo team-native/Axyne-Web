@@ -91,13 +91,6 @@ export default function Settings() {
             </p>
           </div>
         </div>
-        <div className="design-207" data-node-id="25:6642" data-name="On this page">
-          <p className="design-208" data-node-id="25:6643">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6644">주요 설정</a>
-          <a href="#section-2" className="design-168" data-node-id="25:6645">예시</a>
-        </div>
       </div>
       <Footer />
     </div>

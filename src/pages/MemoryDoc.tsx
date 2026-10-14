@@ -104,13 +104,6 @@ export default function MemoryDoc() {
             작업 집합(Working Set)을 GetProcessMemoryInfo로 1초마다 읽어 상태 표시줄에 표시하고, 90 MB를 넘으면 경고색으로 바꿉니다.
           </p>
         </div>
-        <div className="design-207" data-node-id="25:6909" data-name="On this page">
-          <p className="design-208" data-node-id="25:6910">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6911">항목별 목표</a>
-          <a href="#section-2" className="design-168" data-node-id="25:6912">실측 확인</a>
-        </div>
       </div>
       <Footer />
     </div>

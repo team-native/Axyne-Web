@@ -70,13 +70,6 @@ export default function Search() {
             </p>
           </div>
         </div>
-        <div className="design-207" data-node-id="25:6489" data-name="On this page">
-          <p className="design-208" data-node-id="25:6490">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:6491">명령 검색</a>
-          <a href="#section-2" className="design-168" data-node-id="25:6492">자주 쓰는 동작</a>
-        </div>
       </div>
       <Footer />
     </div>

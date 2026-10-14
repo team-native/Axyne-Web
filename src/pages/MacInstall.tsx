@@ -60,14 +60,6 @@ export default function MacInstall() {
             </p>
           </div>
         </div>
-        <div className="design-207" data-node-id="25:7475" data-name="On this page">
-          <p className="design-208" data-node-id="25:7476">
-            이 페이지
-          </p>
-          <a href="#section-1" className="design-209" data-node-id="25:7477">.pkg로 설치</a>
-          <a href="#section-2" className="design-168" data-node-id="25:7478">처음 실행할 때</a>
-          <a href="#section-3" className="design-168" data-node-id="25:7479">제거</a>
-        </div>
       </div>
       <Footer />
     </div>
