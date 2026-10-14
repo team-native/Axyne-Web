@@ -19,10 +19,12 @@ export function usePageMotion(route: string) {
       counters.set(target, original);
       target.textContent = original.replace(number[0], '0');
     });
-    const targets = Array.from(element.querySelectorAll<HTMLElement>(reveals + ', [data-name="Stats"], [data-name="Shape"], [data-name="Stacked Bar"] > *'));
+    const targets = Array.from(element.querySelectorAll<HTMLElement>(reveals + ', [data-name="Stats"], [data-name="Shape"], [data-name="Stacked Bar"]'));
+    const segments = Array.from(element.querySelectorAll<HTMLElement>('[data-name="Stacked Bar"] > *'));
+    segments.forEach(segment => segment.classList.remove('motion-visible'));
     targets.forEach(target => {
       target.classList.remove('motion-visible', 'revealed');
-      if (!target.matches('[data-name="Shape"], [data-name="Stacked Bar"] > *')) target.setAttribute('data-reveal', '');
+      if (!target.matches('[data-name="Shape"], [data-name="Stacked Bar"]')) target.setAttribute('data-reveal', '');
     });
     let scrollFrame = 0;
     const progress = element.querySelector<HTMLElement>('.scroll-progress');
@@ -58,7 +60,13 @@ export function usePageMotion(route: string) {
         if (!entry.isIntersecting) continue;
         const target = entry.target as HTMLElement;
         const delay = Math.min(3, Array.from(target.parentElement?.children || []).indexOf(target)) * 80;
-        if (target.matches('[data-name="Shape"], [data-name="Stacked Bar"] > *')) {
+        if (target.matches('[data-name="Stacked Bar"]')) {
+          Array.from(target.children).forEach((child, index) => {
+            const segment = child as HTMLElement;
+            segment.classList.add('motion-visible');
+            animate(segment, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 240, easing: ease, delay: index * 240, fill: 'backwards' });
+          });
+        } else if (target.matches('[data-name="Shape"]')) {
           target.classList.add('motion-visible');
           animate(target, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 900, easing: ease, delay, fill: 'backwards' });
         } else if (target.matches('[data-name="Stats"]')) {
@@ -87,6 +95,7 @@ export function usePageMotion(route: string) {
     function onPreferenceChange() {
       if (preference.matches) {
         targets.forEach(target => target.classList.add('motion-visible', 'revealed'));
+        segments.forEach(segment => segment.classList.add('motion-visible'));
         animations.forEach(animation => animation.cancel());
         frames.forEach(cancelAnimationFrame);
         counters.forEach((original, target) => { target.textContent = original; });
