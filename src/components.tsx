@@ -12,7 +12,7 @@ const docGroups = [
 export function Header() {
   return <header className="site-header"><Link to="/" className="logo" aria-label="Axyne 홈"><img src={mark} width="30" height="30" alt=""/><span>Axyne</span></Link><nav aria-label="주 메뉴" className="site-nav">{nav.map(([text, href]) => <NavLink key={href} to={href}>{text}</NavLink>)}</nav></header>;
 }
-export function Footer() { return <footer className="site-footer"><span>© 2026 Axyne</span><span>C · Win32 API · Scintilla</span></footer>; }
+export function Footer() { return <footer className="site-footer"><span>© 2026 Native</span><span>C · Win32 API · Scintilla</span></footer>; }
 export function DocSidebar() {
   const location = useLocation();
   const navigate = useNavigate();
