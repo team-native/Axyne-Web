@@ -18,13 +18,25 @@ export function DocSidebar() {
   const navigate = useNavigate();
   return <><select className="doc-mobile-select" aria-label="문서 선택" value={location.pathname} onChange={event => navigate(event.target.value)}>{docGroups.map(group => <optgroup key={group.label} label={group.label}>{group.items.map(([label, href]) => <option key={href} value={href}>{label}</option>)}</optgroup>)}</select><nav className="doc-sidebar" aria-label="문서 메뉴">{docGroups.map(group => <section key={group.label}><p>{group.label}</p>{group.items.map(([label, href]) => <NavLink key={href} to={href} end>{label}</NavLink>)}</section>)}</nav></>;
 }
-export function installerUrl() {
-  const mac = window.location.pathname.endsWith('/macos');
-  const portable = new URLSearchParams(window.location.search).get('platform') === 'portable';
-  return (portable ? import.meta.env.VITE_PORTABLE_DOWNLOAD_URL : mac ? import.meta.env.VITE_MACOS_DOWNLOAD_URL : import.meta.env.VITE_WINDOWS_DOWNLOAD_URL) || '#download-unavailable';
+type Platform = 'windows' | 'macos' | 'portable';
+export function installerUrl(platform?: Platform) {
+  const selected = platform || (window.location.pathname.endsWith('/macos') ? 'macos' : new URLSearchParams(window.location.search).get('platform') === 'portable' ? 'portable' : 'windows');
+  return (selected === 'portable' ? import.meta.env.VITE_PORTABLE_DOWNLOAD_URL : selected === 'macos' ? import.meta.env.VITE_MACOS_DOWNLOAD_URL : import.meta.env.VITE_WINDOWS_DOWNLOAD_URL) || '#download-unavailable';
+}
+export function startDownload(platform?: Platform) {
+  const url = installerUrl(platform);
+  if (url.startsWith('#')) { window.dispatchEvent(new Event('download-unavailable')); return false; }
+  const link = document.createElement('a');
+  link.href = url;
+  link.download = '';
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  return true;
 }
 export function handleInstallerClick(event: MouseEvent<HTMLAnchorElement>) {
-  if (installerUrl().startsWith('#')) { event.preventDefault(); window.dispatchEvent(new Event('download-unavailable')); }
+  event.preventDefault();
+  startDownload();
 }
 type ButtonProps = { className?: string; label?: string; size?: 'S' | 'M' | 'L'; style?: 'Primary' | 'Secondary'; href?: string };
 export function Button({ className, label = '무료 다운로드', style = 'Primary', href = '/download' }: ButtonProps) {

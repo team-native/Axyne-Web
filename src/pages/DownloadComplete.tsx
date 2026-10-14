@@ -15,8 +15,8 @@ export default function DownloadComplete() {
           다운로드해 주셔서 감사합니다
         </h1>
         <div className="design-145" data-node-id="25:7889">
-          <p className="design-146">잠시 후 다운로드가 자동으로 시작됩니다.</p>
-          <p className="design-147">시작되지 않으면 아래 버튼을 눌러 주세요.</p>
+          <p className="design-146">아래 버튼을 눌러 다운로드하세요.</p>
+          <p className="design-147">다시 받으려면 다운로드 버튼을 눌러 주세요.</p>
         </div>
         <div className="design-148" data-node-id="25:7890" data-name="File Info">
           <p className="design-149" data-node-id="25:7891">
