@@ -1,5 +1,5 @@
 import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
-import imgContainer from "../assets/9c07c.svg";
+import imgContainer from "../assets/43cf6.svg";
 
 export default function MacComplete() {
   return (
