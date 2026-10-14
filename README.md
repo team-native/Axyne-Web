@@ -1,6 +1,6 @@
 # Axyne React
 
-Website with 19 pages based on the Axyne Figma design.
+Light theme website with 19 pages, centered documentation tips.
 
 ## Run
 
