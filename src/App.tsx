@@ -23,12 +23,11 @@ import Rendering from './pages/Rendering';
 class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
   state={failed:false};
   static getDerivedStateFromError(){return {failed:true};}
-  render(){return this.state.failed?<div className="app dark"><ServerError/></div>:this.props.children;}
+  render(){return this.state.failed?<div className="app"><ServerError/></div>:this.props.children;}
 }
 function Site(){
   const location=useLocation();
   const [notice,setNotice]=useState(false);
-  const dark=location.pathname.startsWith('/docs')||['/404','/500','/download/complete/macos'].includes(location.pathname);
   useEffect(()=>{
     document.title='Axyne';
     setNotice(false);
@@ -48,7 +47,7 @@ function Site(){
     window.addEventListener('keydown',escape);
     return ()=>{window.removeEventListener('download-unavailable',show);window.removeEventListener('keydown',escape);};
   },[]);
-  return <div className={dark ? 'app dark' : 'app'}><Routes>
+  return <div className="app"><Routes>
   <Route path="/" element={<Home/>}/>
 <Route path="/features" element={<Features/>}/>
 <Route path="/memory-budget" element={<Memory/>}/>
