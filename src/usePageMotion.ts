@@ -12,6 +12,13 @@ export function usePageMotion(route: string) {
     const animations = new Set<Animation>();
     const frames = new Set<number>();
     const counters = new Map<HTMLElement, string>();
+    element.querySelectorAll<HTMLElement>('[data-name="Stats"] > div > p:first-child').forEach(target => {
+      const original = target.textContent || '';
+      const number = original.match(/\d+(?:\.\d+)?/);
+      if (!number || +number[0] === 0 || preference.matches) return;
+      counters.set(target, original);
+      target.textContent = original.replace(number[0], '0');
+    });
     const targets = Array.from(element.querySelectorAll<HTMLElement>(reveals + ', [data-name="Stats"], [data-name="Shape"], [data-name="Stacked Bar"] > *'));
     targets.forEach(target => {
       target.classList.remove('motion-visible', 'revealed');
@@ -32,7 +39,7 @@ export function usePageMotion(route: string) {
       frames.add(id);
     }
     function count(target: HTMLElement) {
-      const original = target.textContent || '';
+      const original = counters.get(target) || target.textContent || '';
       const number = original.match(/\d+(?:\.\d+)?/);
       if (!number || +number[0] === 0 || preference.matches) return;
       counters.set(target, original);
