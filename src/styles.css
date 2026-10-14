@@ -45,7 +45,7 @@ h2[id] { scroll-margin-top: 80px; }
 .nav-download, .button, [data-name="Button"] { transition: transform 150ms cubic-bezier(.2,0,0,1), filter 150ms; }
 .nav-download:hover, .button:hover, [data-name="Button"]:hover { transform: translateY(-1px); }
 [data-name="Product Shot"] { perspective: 1400px; }
-[data-name="IDE Window"] { transform-origin: center top; transform: rotateX(var(--preview-angle, 0deg)) scale(var(--preview-scale, 1)); }
+[data-name="IDE Window"] { transform-origin: center top; transform: rotateX(var(--preview-angle, 0deg)) scale(var(--preview-scale, 1)); box-shadow: 0 30px 90px color-mix(in srgb, var(--accent-default) 22%, transparent); }
 [data-name="Stats"] > div > p:first-child { min-height: 1.5em; font-variant-numeric: tabular-nums; }
 [data-name="Shape"], [data-name="Stacked Bar"] > * { transform-origin: left center; }
 [data-node-id="25:7658"] { width: 9.55%; }
