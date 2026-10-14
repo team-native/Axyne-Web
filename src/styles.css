@@ -23,6 +23,8 @@ h2[id] { scroll-margin-top: 80px; }
 .nav-download { padding: 8px 16px; border-radius: 8px; color: var(--text-on-accent); background: var(--accent-default); font-size: 14px; font-weight: 600; white-space: nowrap; }
 .site-footer { display: flex; justify-content: space-between; align-items: center; padding: 12px 80px; border-top: 1px solid var(--border-default); width: 100%; color: var(--text-muted); font-size: 13px; }
 .site-footer span:last-child { font-family: 'JetBrains Mono', monospace; }
+.app > [data-node-id] { min-height: 100vh; }
+.app > [data-node-id] > .site-footer { margin-top: auto; padding-top: 16px; padding-bottom: 16px; }
 .doc-sidebar { width: 230px; flex-shrink: 0; display: flex; flex-direction: column; gap: 28px; }
 .doc-mobile-select { display: none; }
 .doc-sidebar section { display: flex; flex-direction: column; gap: 6px; align-items: flex-start; }
