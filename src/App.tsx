@@ -1,6 +1,7 @@
 import { Component, useEffect, useState, type ReactNode } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import { DownloadNotice, installerUrl } from './components';
+import { usePageMotion } from './usePageMotion';
 import Home from './pages/Home';
 import Features from './pages/Features';
 import Memory from './pages/Memory';
@@ -28,6 +29,7 @@ class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
 function Site(){
   const location=useLocation();
   const [notice,setNotice]=useState(false);
+  const motionRoot=usePageMotion(location.pathname);
   useEffect(()=>{
     document.title='Axyne';
     setNotice(false);
@@ -47,7 +49,7 @@ function Site(){
     window.addEventListener('keydown',escape);
     return ()=>{window.removeEventListener('download-unavailable',show);window.removeEventListener('keydown',escape);};
   },[]);
-  return <div className="app"><Routes>
+  return <div className="app" ref={motionRoot}><div className="scroll-progress" aria-hidden="true"/><Routes>
   <Route path="/" element={<Home/>}/>
 <Route path="/features" element={<Features/>}/>
 <Route path="/memory-budget" element={<Memory/>}/>
