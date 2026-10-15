@@ -1,6 +1,6 @@
 import { Component, useEffect, useState, type ReactNode, type MouseEvent } from 'react';
 import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { DownloadNotice, startDownload } from './components';
+import { DownloadNotice, startDownload, type Platform } from './components';
 import { usePageMotion } from './usePageMotion';
 import Home from './pages/Home';
 import Features from './pages/Features';
@@ -29,17 +29,17 @@ class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
 function Site(){
   const location=useLocation();
   const navigate=useNavigate();
-  const [notice,setNotice]=useState(false);
+  const [notice,setNotice]=useState<Platform | null>(null);
   const motionRoot=usePageMotion(location.pathname);
   useEffect(()=>{
     document.title='Axyne';
-    setNotice(false);
+    setNotice(null);
     if(!location.hash) window.scrollTo(0,0);
     else requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView());
   },[location.pathname,location.search]);
   useEffect(()=>{
-    const show=()=>setNotice(true);
-    const escape=(event:KeyboardEvent)=>{if(event.key==='Escape')setNotice(false);};
+    const show=(event:Event)=>setNotice((event as CustomEvent<Platform>).detail);
+    const escape=(event:KeyboardEvent)=>{if(event.key==='Escape')setNotice(null);};
     window.addEventListener('download-unavailable',show);
     window.addEventListener('keydown',escape);
     return ()=>{window.removeEventListener('download-unavailable',show);window.removeEventListener('keydown',escape);};
@@ -76,7 +76,7 @@ function Site(){
 <Route path="/docs/shortcuts" element={<Shortcuts/>}/>
 <Route path="/docs/memory-budget" element={<MemoryDoc/>}/>
 <Route path="/docs/rendering" element={<Rendering/>}/>
-  <Route path="*" element={<NotFound/>}/></Routes>{notice&&<DownloadNotice close={()=>setNotice(false)}/>}</div>;
+  <Route path="*" element={<NotFound/>}/></Routes>{notice&&<DownloadNotice platform={notice} close={()=>setNotice(null)}/>}</div>;
 }
 export default function App(){return <BrowserRouter><ErrorBoundary><Site/></ErrorBoundary></BrowserRouter>;}
 
