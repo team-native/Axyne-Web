@@ -18,14 +18,18 @@ export function DocSidebar() {
   const navigate = useNavigate();
   return <><select className="doc-mobile-select" aria-label="문서 선택" value={location.pathname} onChange={event => navigate(event.target.value)}>{docGroups.map(group => <optgroup key={group.label} label={group.label}>{group.items.map(([label, href]) => <option key={href} value={href}>{label}</option>)}</optgroup>)}</select><nav className="doc-sidebar" aria-label="문서 메뉴">{docGroups.map(group => <section key={group.label}><p>{group.label}</p>{group.items.map(([label, href]) => <NavLink key={href} to={href} end>{label}</NavLink>)}</section>)}</nav></>;
 }
-type Platform = 'windows' | 'macos' | 'portable';
+export type Platform = 'windows' | 'macos' | 'portable';
+function downloadPlatform(platform?: Platform): Platform {
+  return platform || (window.location.pathname.endsWith('/macos') ? 'macos' : new URLSearchParams(window.location.search).get('platform') === 'portable' ? 'portable' : 'windows');
+}
 export function installerUrl(platform?: Platform) {
-  const selected = platform || (window.location.pathname.endsWith('/macos') ? 'macos' : new URLSearchParams(window.location.search).get('platform') === 'portable' ? 'portable' : 'windows');
+  const selected = downloadPlatform(platform);
   return (selected === 'portable' ? import.meta.env.VITE_PORTABLE_DOWNLOAD_URL : selected === 'macos' ? import.meta.env.VITE_MACOS_DOWNLOAD_URL : import.meta.env.VITE_WINDOWS_DOWNLOAD_URL) || '#download-unavailable';
 }
 export function startDownload(platform?: Platform) {
-  const url = installerUrl(platform);
-  if (url.startsWith('#')) { window.dispatchEvent(new Event('download-unavailable')); return false; }
+  const selected = downloadPlatform(platform);
+  const url = installerUrl(selected);
+  if (url.startsWith('#')) { window.dispatchEvent(new CustomEvent<Platform>('download-unavailable', { detail: selected })); return false; }
   const link = document.createElement('a');
   link.href = url;
   link.download = '';
@@ -43,7 +47,6 @@ export function Button({ className, label = '무료 다운로드', style = 'Prim
   const classes = `${className || 'button'} component-button ${style === 'Secondary' ? 'secondary' : 'primary'}`;
   return href === 'download' ? <a className={classes} href={installerUrl()} onClick={handleInstallerClick}>{label}</a> : <Link className={classes} to={href}>{label}</Link>;
 }
-export function DownloadNotice({ close }: { close: () => void }) {
-  const location = useLocation();
-  return <div className="modal-backdrop" onClick={close}><section className="download-notice" role="dialog" aria-modal="true" aria-labelledby="notice-title" onClick={event => event.stopPropagation()}><h2 id="notice-title">설치 파일 준비 중</h2><p>아직 설치 파일이 연결되지 않았습니다.</p><div><Link to={location.pathname.endsWith('/macos') ? '/docs/macos' : '/docs/windows'} className="button secondary" onClick={close}>설치 문서 보기</Link><button className="button" type="button" autoFocus onClick={close}>확인</button></div></section></div>;
+export function DownloadNotice({ close, platform }: { close: () => void; platform: Platform }) {
+  return <div className="modal-backdrop" onClick={close}><section className="download-notice" role="dialog" aria-modal="true" aria-labelledby="notice-title" onClick={event => event.stopPropagation()}><h2 id="notice-title">설치 파일 준비 중</h2><p>아직 설치 파일이 연결되지 않았습니다.</p><div><Link to={platform === 'macos' ? '/docs/macos' : '/docs/windows'} className="button secondary" onClick={close}>설치 문서 보기</Link><button className="button" type="button" autoFocus onClick={close}>확인</button></div></section></div>;
 }
