@@ -12,7 +12,7 @@ export default function Home() {
         </div>
         <div className="design-5" data-node-id="25:7498">
           <p className="design-6">메모리 100 MB 이하로</p>
-          <p className="design-7">돌아가는 Win32 IDE</p>
+          <p className="design-7">돌아가는 IDE</p>
         </div>
         <div className="design-8" data-node-id="25:7499">
           <p className="design-9">웹뷰도, 스크립트 런타임도 없습니다. C, Win32 API, Scintilla만으로 만든</p>
