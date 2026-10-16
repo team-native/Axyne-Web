@@ -1,7 +1,4 @@
 import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
-import imgDot from "../assets/0a9df.svg";
-import imgDot1 from "../assets/4dfc1.svg";
-import imgDot2 from "../assets/fc36d.svg";
 
 export default function Home() {
   return (
@@ -40,15 +37,9 @@ export default function Home() {
       <div className="design-17" data-node-id="25:7504" data-name="Product Shot">
         <div className="design-18" data-node-id="25:7505" data-name="IDE Window">
           <div className="design-19" data-node-id="25:7506" data-name="Titlebar">
-            <div className="design-20" data-node-id="25:7507" data-name="Dot">
-              <img alt="" className="design-21" src={imgDot} />
-            </div>
-            <div className="design-20" data-node-id="25:7508" data-name="Dot">
-              <img alt="" className="design-21" src={imgDot1} />
-            </div>
-            <div className="design-20" data-node-id="25:7509" data-name="Dot">
-              <img alt="" className="design-21" src={imgDot2} />
-            </div>
+            <div className="design-20" data-node-id="25:7507" data-name="Dot" aria-hidden="true" />
+            <div className="design-20" data-node-id="25:7508" data-name="Dot" aria-hidden="true" />
+            <div className="design-20" data-node-id="25:7509" data-name="Dot" aria-hidden="true" />
             <p className="design-22" data-node-id="25:7510">
               main.c — Axyne
             </p>
