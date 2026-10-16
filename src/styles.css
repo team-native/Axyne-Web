@@ -48,6 +48,10 @@ h2[id] { scroll-margin-top: 80px; }
 [data-name="Note"] > p:last-child { flex: 1; min-width: 0; width: auto; }
 [data-name="Platform Cards"] > div > a:last-child,
 [data-name="Download Cards"] > div > a:last-child { margin-top: auto; min-height: 48px; align-items: center; }
+@media (min-width: 801px) {
+ [data-name="Platform Cards"] { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); }
+ [data-name="Platform Cards"] > div { display: grid; grid-template-rows: subgrid; grid-row: span 5; justify-items: start; }
+}
 .scroll-progress { position: fixed; inset: 0 0 auto; height: 3px; background: var(--accent-default); z-index: 60; transform: scaleX(0); transform-origin: left center; pointer-events: none; }
 .nav-download, .button, [data-name="Button"] { transition: transform 150ms cubic-bezier(.2,0,0,1), filter 150ms; }
 .nav-download:hover, .button:hover, [data-name="Button"]:hover { transform: translateY(-1px); }
