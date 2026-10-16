@@ -1,6 +1,7 @@
 import { type MouseEvent } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import mark from './assets/9d914.png';
+import nativeLogo from './assets/native-logo.png';
 
 const nav = [['특징', '/features'], ['메모리 예산', '/memory-budget'], ['문서', '/docs'], ['다운로드', '/download']];
 const docGroups = [
@@ -12,7 +13,19 @@ const docGroups = [
 export function Header() {
   return <header className="site-header"><Link to="/" className="logo" aria-label="Axyne 홈"><img src={mark} width="30" height="30" alt=""/><span>Axyne</span></Link><nav aria-label="주 메뉴" className="site-nav">{nav.map(([text, href]) => <NavLink key={href} to={href}>{text}</NavLink>)}</nav></header>;
 }
-export function Footer() { return <footer className="site-footer"><span>© 2026 Native</span><span>C · Win32 API · Scintilla</span></footer>; }
+export function Footer() {
+  return <footer className="site-footer">
+    <div className="footer-brand">
+      <a className="footer-wordmark" href="https://github.com/team-native" aria-label="Native GitHub"><img src={nativeLogo} width="48" height="48" alt=""/><span>Native</span></a>
+      <p>© 2026 Native. All rights reserved.</p>
+    </div>
+    <nav className="footer-links" aria-label="푸터 메뉴">
+      <Link to="/docs">문서</Link>
+      <Link to="/download">다운로드</Link>
+      <a href="https://github.com/team-native/Axyne-Web">GitHub <span aria-hidden="true">↗</span></a>
+    </nav>
+  </footer>;
+}
 export function DocSidebar() {
   const location = useLocation();
   const navigate = useNavigate();
