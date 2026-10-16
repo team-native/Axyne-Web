@@ -15,8 +15,8 @@ export default function Home() {
           <p className="design-7">돌아가는 IDE</p>
         </div>
         <div className="design-8" data-node-id="25:7499">
-          <p className="design-9">웹뷰도, 스크립트 런타임도 없습니다. C, Win32 API, Scintilla만으로 만든</p>
-          <p className="design-10">가볍고 즉시 켜지는 코드 편집기.</p>
+          <p className="design-9">웹뷰도, 스크립트 런타임도 없습니다. C와 Scintilla로 만든</p>
+          <p className="design-10">가볍고 즉시 켜지는 IDE.</p>
         </div>
         <div className="design-11" data-node-id="25:7500" data-name="CTA">
           <a href="/download/complete" className="design-12" data-node-id="25:7501" data-name="Button">
