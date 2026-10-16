@@ -54,6 +54,19 @@ h2[id] { scroll-margin-top: 80px; }
 [data-name="Stats"] > div > p:first-child { min-height: 1.5em; font-variant-numeric: tabular-nums; }
 [data-name="Shape"], [data-name="Stacked Bar"] > * { transform-origin: left center; }
 [data-name="Stacked Bar"] { background: var(--bg-track); border-radius: 6px; }
+[data-name="Bars"] { --comparison-track: #eee7f6; }
+[data-name="Bars"] [data-name="Container"] { background: var(--comparison-track); }
+[data-name="Bars"] > [data-name="Row"]:nth-child(n+2) [data-name="Shape"] { background: #c9a2f7; }
+[data-name="Bars"] > [data-name="Row"] { display: grid; grid-template-columns: 200px minmax(0, 1fr) 110px; }
+[data-name="Bars"] > [data-name="Row"] > p { width: auto; }
+[data-name="Bars"] > [data-name="Row"] > p:last-child { text-align: right; }
+[data-name="Bars"] [data-name="Container"] { width: 100%; min-width: 0; }
+[data-name="Bars"] > [data-name="Row"]:nth-child(1) [data-name="Shape"] { width: 10%; }
+[data-name="Bars"] > [data-name="Row"]:nth-child(2) [data-name="Shape"] { width: 70%; }
+[data-name="Bars"] > [data-name="Row"]:nth-child(3) [data-name="Shape"] { width: 100%; }
+@media (prefers-color-scheme: dark) {
+ [data-name="Bars"] { --comparison-track: #30233f; }
+}
 [data-node-id="25:7658"] { width: 9.55%; }
 [data-node-id="25:7663"] { width: 68.73%; }
 [data-node-id="25:7668"] { width: 99.27%; }
@@ -113,6 +126,8 @@ h2[id] { scroll-margin-top: 80px; }
  [data-name="Stats"] > div { flex-basis: calc(50% - 12px); }
  [data-name="Features"] > div:first-child p, [data-name="Platforms"] > div:first-child p, [data-name="Memory Budget"] > div:first-child p { white-space: normal; }
  [data-name="Bars"] > div { flex-wrap: wrap; gap: 10px; }
+ [data-name="Bars"] > [data-name="Row"] { grid-template-columns: minmax(0, 1fr) auto; }
+ [data-name="Bars"] [data-name="Container"] { grid-column: 1 / -1; }
  [data-name="Bars"] > div > div { min-width: 100%; order: 3; }
  [data-name="Memory Budget"] > p { white-space: normal; }
  [data-name="Download CTA"] > p { white-space: normal; text-align: center; }
