@@ -31,7 +31,7 @@ export default function Introduction() {
                 •
               </p>
               <p className="design-194" data-node-id="25:6238">
-                필요한 것만 그린다 — 미니맵·애니메이션·그림자 없음
+                필요한 것만 그립니다 — 미니맵·애니메이션·그림자 없음
               </p>
             </div>
             <div className="design-192" data-node-id="25:6239" data-name="Text stack">

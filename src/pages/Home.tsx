@@ -86,7 +86,7 @@ export default function Home() {
                 <p className="design-35" data-node-id="25:7528">
                   3
                 </p>
-                <p className="design-36" data-node-id="25:7529">{`// 무효화된 영역만 다시 그린다`}</p>
+                <p className="design-36" data-node-id="25:7529">{`// 무효화된 영역만 다시 그립니다`}</p>
               </div>
               <div className="design-30" data-node-id="25:7530" data-name="Text stack">
                 <p className="design-31" data-node-id="25:7531">
@@ -208,7 +208,7 @@ export default function Home() {
               </p>
             </div>
             <p className="design-54" data-node-id="25:7582">
-              필요한 것만 그린다
+              필요한 것만 그립니다
             </p>
             <p className="design-55" data-node-id="25:7583">
               미니맵·애니메이션·그림자 없음. 무효화된 영역만 다시 그림.
