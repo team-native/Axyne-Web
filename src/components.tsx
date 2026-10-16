@@ -16,14 +16,14 @@ export function Header() {
 export function Footer() {
   return <footer className="site-footer">
     <div className="footer-brand">
-      <a className="footer-wordmark" href="https://github.com/team-native" aria-label="Native GitHub"><img src={nativeLogo} width="48" height="48" alt=""/><span>Native</span></a>
-      <p>© 2026 Native. All rights reserved.</p>
+      <a className="footer-wordmark" href="https://github.com/team-native" aria-label="Native GitHub"><img src={nativeLogo} width="36" height="36" alt=""/><span>Native</span></a>
     </div>
     <nav className="footer-links" aria-label="푸터 메뉴">
       <Link to="/docs">문서</Link>
       <Link to="/download">다운로드</Link>
       <a href="https://github.com/team-native/Axyne-Web">GitHub <span aria-hidden="true">↗</span></a>
     </nav>
+    <p className="footer-copyright">© 2026 Native</p>
   </footer>;
 }
 export function DocSidebar() {
