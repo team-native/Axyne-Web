@@ -43,14 +43,14 @@ export default function Features() {
               편집기·출력·터미널이 같은 컨트롤. 탭은 문서만 바꾸고 창은 공유합니다.
             </p>
           </div>
-          <div className="design-95" data-node-id="25:7709" data-name="Card / 필요한 것만 그린다">
+          <div className="design-95" data-node-id="25:7709" data-name="Card / 필요한 것만 그립니다">
             <div className="design-96" data-node-id="25:7710" data-name="Text wrap">
               <p className="design-97" data-node-id="25:7711">
                 RENDER
               </p>
             </div>
             <p className="design-98" data-node-id="25:7712">
-              필요한 것만 그린다
+              필요한 것만 그립니다
             </p>
             <p className="design-61" data-node-id="25:7713">
               미니맵·애니메이션·그림자 없음. 무효화된 영역만 다시 그려 CPU와 메모리를 아낍니다.

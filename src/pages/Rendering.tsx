@@ -44,7 +44,7 @@ export default function Rendering() {
             </div>
           </div>
           <div className="design-212" data-node-id="25:6976" data-name="Code Block">
-            <p className="design-213" data-node-id="25:6977">{`// 무효화된 영역만 다시 그린다`}</p>
+            <p className="design-213" data-node-id="25:6977">{`// 무효화된 영역만 다시 그립니다`}</p>
             <p className="design-214" data-node-id="25:6978">{`InvalidateRect(hwnd, &dirty, FALSE);`}</p>
           </div>
           <div className="design-204" data-node-id="25:6979" data-name="Callout">
