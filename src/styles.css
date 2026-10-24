@@ -21,7 +21,7 @@ h2[id] { scroll-margin-top: 80px; }
 .site-nav { display: flex; gap: 36px; font-size: 15px; font-weight: 500; color: var(--text-secondary); }
 .site-nav .active { color: var(--text-accent); }
 .nav-download { padding: 8px 16px; border-radius: 8px; color: var(--text-on-accent); background: var(--accent-default); font-size: 14px; font-weight: 600; white-space: nowrap; }
-.site-footer { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; padding: 40px 80px; min-height: 220px; border-top: 1px solid var(--border-default); width: 100%; background: var(--bg-page); color: var(--text-muted); font-size: 13px; text-align: center; }
+.site-footer { display: flex; flex-direction: column; justify-content: center; align-items: center; gap: 18px; padding: 40px 80px; min-height: 220px; border-top: 1px solid var(--border-default); width: 100%; background: var(--bg-footer, #f8f9fb); color: var(--text-muted); font-size: 13px; text-align: center; }
 .footer-brand { display: flex; justify-content: center; }
 .footer-wordmark { display: inline-flex; align-items: center; gap: 2px; color: var(--text-strong); font-size: 16px; line-height: 20px; font-weight: 600; }
 .footer-wordmark img { flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px; }

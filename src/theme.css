@@ -2,6 +2,7 @@
   .app {
     color-scheme: dark;
     --bg-page: #131417;
+    --bg-footer: #181a1e;
     --bg-surface: #1c1e22;
     --bg-sunken: #181a1e;
     --bg-code: #1a1c20;
