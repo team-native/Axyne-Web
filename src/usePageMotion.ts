@@ -30,6 +30,7 @@ export function usePageMotion(route: string) {
     const progress = element.querySelector<HTMLElement>('.scroll-progress');
     const header = element.querySelector<HTMLElement>('.site-header');
     const preview = element.querySelector<HTMLElement>('[data-name="IDE Window"]');
+    const documentScroller = element.querySelector<HTMLElement>('[data-name^="Docs /"] [data-name="Article"]');
     function animate(target: HTMLElement, keyframes: Keyframe[], options: KeyframeAnimationOptions) {
       if (preference.matches) return;
       const animation = target.animate(keyframes, options);
@@ -86,9 +87,10 @@ export function usePageMotion(route: string) {
     targets.forEach(target => observer.observe(target));
     function updateScroll() {
       scrollFrame = 0;
-      const max = document.documentElement.scrollHeight - innerHeight;
-      if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(1, scrollY / max) : 0})`;
-      header?.classList.toggle('scrolled', scrollY > 8);
+      const max = documentScroller ? documentScroller.scrollHeight - documentScroller.clientHeight : document.documentElement.scrollHeight - innerHeight;
+      const position = documentScroller ? documentScroller.scrollTop : scrollY;
+      if (progress) progress.style.transform = `scaleX(${max > 0 ? Math.min(1, position / max) : 0})`;
+      header?.classList.toggle('scrolled', position > 8);
       if (preview) {
         const fraction = Math.min(1, Math.max(0, (innerHeight - preview.getBoundingClientRect().top) / (innerHeight * .95)));
         preview.style.setProperty('--preview-angle', preference.matches ? '0deg' : `${8 * (1 - fraction)}deg`);
@@ -107,6 +109,7 @@ export function usePageMotion(route: string) {
       updateScroll();
     }
     window.addEventListener('scroll', onScroll, { passive: true });
+    documentScroller?.addEventListener('scroll', onScroll, { passive: true });
     window.addEventListener('resize', onScroll);
     preference.addEventListener('change', onPreferenceChange);
     updateScroll();
@@ -117,6 +120,7 @@ export function usePageMotion(route: string) {
       counters.forEach((original, target) => { target.textContent = original; });
       cancelAnimationFrame(scrollFrame);
       window.removeEventListener('scroll', onScroll);
+      documentScroller?.removeEventListener('scroll', onScroll);
       window.removeEventListener('resize', onScroll);
       preference.removeEventListener('change', onPreferenceChange);
     };
