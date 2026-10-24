@@ -197,3 +197,11 @@ h2[id] { scroll-margin-top: 80px; }
  .site-header, .nav-download, .button, [data-name="Button"] { transition: none; }
  .nav-download:hover, .button:hover, [data-name="Button"]:hover, [data-name="IDE Window"] { transform: none; }
 }
+.app > [data-name^="Docs /"] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; }
+[data-name^="Docs /"] > [data-name="Docs Layout"] { display: grid; grid-template-columns: 210px minmax(0, 1fr); align-items: stretch; gap: 32px; min-height: 0; height: 100%; padding-top: 24px; padding-bottom: 24px; overflow: hidden; }
+[data-name^="Docs /"] [data-name="Article"] { min-height: 0; height: 100%; overflow-y: auto; overflow-x: hidden; padding: 8px 16px 40px 0; scrollbar-gutter: stable; scroll-padding-top: 16px; }
+[data-name="Docs Layout"] .doc-sidebar { width: 210px; min-height: 0; overflow-y: auto; scrollbar-gutter: stable; }
+@media (max-width: 800px) {
+ [data-name^="Docs /"] > [data-name="Docs Layout"] { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 16px; padding-top: 16px; padding-bottom: 16px; }
+ [data-name^="Docs /"] [data-name="Article"] { padding-right: 8px; }
+}

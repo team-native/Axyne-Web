@@ -34,7 +34,10 @@ function Site(){
   useEffect(()=>{
     document.title='Axyne';
     setNotice(null);
-    if(!location.hash) window.scrollTo(0,0);
+    if(!location.hash) {
+      window.scrollTo(0,0);
+      motionRoot.current?.querySelector('[data-name="Article"]')?.scrollTo(0,0);
+    }
     else requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView());
   },[location.pathname,location.search]);
   useEffect(()=>{
