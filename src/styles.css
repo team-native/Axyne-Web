@@ -67,6 +67,7 @@ h2[id] { scroll-margin-top: 80px; }
 [data-name="Note"] { align-items: center; }
 [data-name="Note"] > p:first-child { flex: 0 0 auto; align-self: center; display: flex; align-items: center; justify-content: center; min-height: 22px; line-height: 22px; }
 [data-name="Note"] > p:last-child { flex: 1; min-width: 0; width: auto; }
+[data-name="Budget"] { padding-bottom: 40px; }
 [data-name="Platform Cards"] > div > a:last-child,
 [data-name="Download Cards"] > div > a:last-child { margin-top: auto; min-height: 48px; align-items: center; }
 @media (min-width: 801px) {
