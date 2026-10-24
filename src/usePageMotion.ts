@@ -8,6 +8,7 @@ export function usePageMotion(route: string) {
   useLayoutEffect(() => {
     const element = root.current;
     if (!element) return;
+    if (route === '/docs' || route.startsWith('/docs/')) return;
     const preference = window.matchMedia('(prefers-reduced-motion: reduce)');
     const animations = new Set<Animation>();
     const frames = new Set<number>();
