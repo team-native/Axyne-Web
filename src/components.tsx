@@ -29,7 +29,7 @@ export function Footer() {
 export function DocSidebar() {
   const location = useLocation();
   const navigate = useNavigate();
-  return <><select className="doc-mobile-select" aria-label="문서 선택" value={location.pathname} onChange={event => navigate(event.target.value)}>{docGroups.map(group => <optgroup key={group.label} label={group.label}>{group.items.map(([label, href]) => <option key={href} value={href}>{label}</option>)}</optgroup>)}</select><nav className="doc-sidebar" aria-label="문서 메뉴">{docGroups.map(group => <section key={group.label}><p>{group.label}</p>{group.items.map(([label, href]) => <NavLink key={href} to={href} end>{label}</NavLink>)}</section>)}</nav></>;
+  return <><select className="doc-mobile-select" aria-label="문서 선택" value={location.pathname} onChange={event => navigate(event.target.value)}>{docGroups.map(group => <optgroup key={group.label} label={group.label}>{group.items.map(([label, href]) => <option key={href} value={href}>{label}</option>)}</optgroup>)}</select><nav className="doc-sidebar" aria-label="문서 메뉴"><h2 className="doc-sidebar-title">문서</h2>{docGroups.map(group => <section key={group.label}><p>{group.label}</p>{group.items.map(([label, href]) => <NavLink key={href} to={href} end>{label}</NavLink>)}</section>)}</nav></>;
 }
 export type Platform = 'windows' | 'macos' | 'portable';
 function downloadPlatform(platform?: Platform): Platform {

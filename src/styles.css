@@ -200,7 +200,14 @@ h2[id] { scroll-margin-top: 80px; }
 .app > [data-name^="Docs /"] { display: grid; grid-template-rows: auto minmax(0, 1fr) auto; height: 100dvh; min-height: 0; overflow: hidden; }
 [data-name^="Docs /"] > [data-name="Docs Layout"] { display: grid; grid-template-columns: 210px minmax(0, 1fr); align-items: stretch; gap: 32px; min-height: 0; height: 100%; padding-top: 24px; padding-bottom: 24px; overflow: hidden; }
 [data-name^="Docs /"] [data-name="Article"] { min-height: 0; height: 100%; overflow-y: auto; overflow-x: hidden; padding: 8px 16px 40px 0; scrollbar-gutter: stable; scroll-padding-top: 16px; }
-[data-name="Docs Layout"] .doc-sidebar { width: 210px; min-height: 0; overflow-y: auto; scrollbar-gutter: stable; }
+[data-name="Docs Layout"] .doc-sidebar { width: 210px; min-height: 0; overflow-y: auto; scrollbar-gutter: stable; gap: 16px; padding: 16px 12px; background: var(--bg-surface); border-right: 1px solid var(--border-default); }
+.doc-sidebar-title { margin: 0; color: var(--text-strong); font-size: 16px; line-height: 24px; }
+.doc-sidebar section { gap: 4px; align-items: stretch; }
+.doc-sidebar section + section { border-top: 1px solid var(--border-default); padding-top: 12px; }
+.doc-sidebar section > p { padding: 0 10px 4px; }
+.doc-sidebar a { min-height: 32px; padding: 6px 10px; border-radius: 4px; line-height: 20px; }
+.doc-sidebar a:hover { background: var(--bg-accent-subtle); color: var(--text-accent); }
+.doc-sidebar a.active { box-shadow: inset 3px 0 var(--accent-default); }
 @media (max-width: 800px) {
  [data-name^="Docs /"] > [data-name="Docs Layout"] { grid-template-columns: minmax(0, 1fr); grid-template-rows: auto minmax(0, 1fr); gap: 16px; padding-top: 16px; padding-bottom: 16px; }
  [data-name^="Docs /"] [data-name="Article"] { padding-right: 8px; }
