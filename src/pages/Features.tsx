@@ -1,4 +1,5 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Link } from "react-router-dom";
+import { Header, Footer } from "../components";
 
 export default function Features() {
   return (
@@ -99,23 +100,36 @@ export default function Features() {
           </div>
         </div>
       </div>
-      <div className="design-99" data-node-id="25:7730" data-name="CTA Band">
-        <p className="design-100" data-node-id="25:7731">
-          직접 써 보면 가장 빠릅니다
-        </p>
-        <div className="design-86" data-node-id="25:7732" data-name="Row">
-          <a href="/download/complete" className="design-101" data-node-id="25:7733" data-name="Button">
-            <p className="design-102" data-node-id="I25:7733;20:5">
-              Windows용 다운로드
-            </p>
-          </a>
-          <a href="/docs" className="design-103" data-node-id="25:7734" data-name="Button">
-            <p className="design-72" data-node-id="I25:7734;20:11">
-              문서 보기
-            </p>
-          </a>
-        </div>
-      </div>
+      <section className="practical-features" data-name="Practical Features" aria-labelledby="practical-features-title">
+        <header>
+          <h2 id="practical-features-title">작업에 필요한 기본 기능</h2>
+          <p>파일을 편집하고, 필요한 곳을 찾고, 실행 결과를 확인합니다.</p>
+        </header>
+        <article className="feature-detail">
+          <span className="feature-detail-number" aria-hidden="true">01</span>
+          <h3>문서별로 이어지는 편집</h3>
+          <div>
+            <p>탭을 바꿔도 각 문서의 실행 취소 기록은 따로 보관됩니다. 여러 파일을 오가며 작업해도 편집 기록이 섞이지 않습니다.</p>
+            <Link to="/docs/editor">편집기와 탭</Link>
+          </div>
+        </article>
+        <article className="feature-detail">
+          <span className="feature-detail-number" aria-hidden="true">02</span>
+          <h3>한곳에서 찾는 파일과 명령</h3>
+          <div>
+            <p>명령 검색에서 파일과 명령을 찾고 원하는 줄로 이동합니다. 파일 안의 텍스트 검색과 바꾸기도 지원합니다.</p>
+            <Link to="/docs/search">검색과 이동</Link>
+          </div>
+        </article>
+        <article className="feature-detail">
+          <span className="feature-detail-number" aria-hidden="true">03</span>
+          <h3>편집기 안에서 확인하는 결과</h3>
+          <div>
+            <p>터미널과 출력 패널에서 명령 실행 결과, 빌드 로그를 확인합니다. 버퍼의 줄 수에 상한을 두어 로그가 계속 쌓이는 것을 제한합니다.</p>
+            <Link to="/docs/terminal">터미널·출력</Link>
+          </div>
+        </article>
+      </section>
       <Footer />
     </div>
   );
