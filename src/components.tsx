@@ -1,4 +1,4 @@
-import { type MouseEvent } from 'react';
+import { useId, type MouseEvent } from 'react';
 import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import mark from './assets/9d914.png';
 import nativeLogo from './assets/native-logo.png';
@@ -14,9 +14,18 @@ export function Header() {
   return <header className="site-header"><Link to="/" className="logo" aria-label="Axyne 홈"><img src={mark} width="30" height="30" alt=""/><span>Axyne</span></Link><nav aria-label="주 메뉴" className="site-nav">{nav.map(([text, href]) => <NavLink key={href} to={href}>{text}</NavLink>)}</nav></header>;
 }
 export function Footer() {
+  const logoFilter = useId();
   return <footer className="site-footer">
+    <svg width="0" height="0" aria-hidden="true" focusable="false" style={{ position: 'absolute' }}>
+      <defs>
+        <filter id={logoFilter} x="0" y="0" width="100%" height="100%" colorInterpolationFilters="sRGB">
+          <feColorMatrix type="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 -25 0 24.75" />
+          <feComposite in2="SourceGraphic" operator="in" />
+        </filter>
+      </defs>
+    </svg>
     <div className="footer-brand">
-      <a className="footer-wordmark" href="https://github.com/team-native" aria-label="Native GitHub"><img src={nativeLogo} width="36" height="36" alt=""/><span>Native</span></a>
+      <a className="footer-wordmark" href="https://github.com/team-native" aria-label="Native GitHub"><img src={nativeLogo} width="36" height="36" alt="" style={{ filter: `url(#${logoFilter})` }}/><span>Native</span></a>
     </div>
     <nav className="footer-links" aria-label="푸터 메뉴">
       <Link to="/docs">문서</Link>
