@@ -19,7 +19,7 @@ export function usePageMotion(route: string) {
       counters.set(target, original);
       target.textContent = original.replace(number[0], '0');
     });
-    const targets = Array.from(element.querySelectorAll<HTMLElement>(reveals + ', [data-name="Stats"], [data-name="Shape"], [data-name="Stacked Bar"]'));
+    const targets = Array.from(element.querySelectorAll<HTMLElement>(reveals + ', .practical-features > header, .feature-detail, [data-name="Stats"], [data-name="Shape"], [data-name="Stacked Bar"]'));
     const segments = Array.from(element.querySelectorAll<HTMLElement>('[data-name="Stacked Bar"] > *'));
     segments.forEach(segment => segment.classList.remove('motion-visible'));
     targets.forEach(target => {

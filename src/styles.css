@@ -27,6 +27,22 @@ h2[id] { scroll-margin-top: 80px; }
 .footer-wordmark img { flex-shrink: 0; width: 36px; height: 36px; border-radius: 8px; }
 .footer-links { display: flex; align-items: center; justify-content: center; flex-wrap: wrap; gap: 24px; font-size: 14px; }
 .footer-copyright { font-size: 12px; }
+.practical-features { width: 100%; padding: 56px var(--page-gutter) 72px; border-top: 1px solid var(--border-default); }
+.practical-features > header { margin-bottom: 32px; }
+.practical-features h2 { font-size: 28px; line-height: 40px; color: var(--text-strong); }
+.practical-features > header > p { margin-top: 12px; color: var(--text-secondary); font-size: 15px; line-height: 26px; }
+.feature-detail { display: grid; grid-template-columns: 36px 220px minmax(0, 1fr); gap: 24px; padding: 28px 0; border-top: 1px solid var(--border-default); }
+.feature-detail-number { color: var(--text-accent); font: 500 13px/28px 'JetBrains Mono', monospace; }
+.feature-detail h3 { margin: 0; color: var(--text-strong); font-size: 18px; line-height: 28px; }
+.feature-detail > div { min-width: 0; }
+.feature-detail p { color: var(--text-secondary); font-size: 15px; line-height: 26px; }
+.feature-detail a { display: inline-block; margin-top: 12px; color: var(--text-accent); font-size: 14px; text-decoration: underline; text-underline-offset: 4px; }
+@media (max-width: 800px) {
+ .practical-features { padding-top: 36px; padding-bottom: 48px; }
+ .practical-features h2 { font-size: 24px; line-height: 34px; }
+ .feature-detail { grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 24px 0; }
+ .feature-detail > div { grid-column: 2; }
+}
 .footer-links a:hover { color: var(--text-accent); }
 .app > [data-node-id] { min-height: 100vh; }
 .app > [data-node-id] > .site-footer { margin-top: auto; padding-top: 40px; padding-bottom: 40px; }
