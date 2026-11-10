@@ -3,7 +3,7 @@ import { Link, NavLink, useLocation, useNavigate } from 'react-router-dom';
 import mark from './assets/9d914.png';
 import nativeLogo from './assets/native-logo.png';
 
-const nav = [['특징', '/features'], ['메모리 예산', '/memory-budget'], ['마켓플레이스', '/marketplace'], ['문서', '/docs'], ['다운로드', '/download']];
+const nav = [['특징', '/features'], ['메모리 예산', '/memory-budget'], ['마켓플레이스', '/marketplace'], ['문서', '/docs'], ['다운로드', '/download'], ['개발자 센터', '/developer']];
 const docGroups = [
   { label: '시작하기', items: [['소개', '/docs'], ['Windows 설치', '/docs/windows'], ['macOS 설치', '/docs/macos']] },
   { label: '사용법', items: [['편집기와 탭', '/docs/editor'], ['검색과 이동', '/docs/search'], ['터미널·출력', '/docs/terminal']] },
