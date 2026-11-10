@@ -21,6 +21,8 @@ import Theme from './pages/Theme';
 import Shortcuts from './pages/Shortcuts';
 import MemoryDoc from './pages/MemoryDoc';
 import Rendering from './pages/Rendering';
+import Marketplace from './pages/Marketplace';
+import PluginDetail from './pages/PluginDetail';
 class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
   state={failed:false};
   static getDerivedStateFromError(){return {failed:true};}
@@ -76,6 +78,8 @@ function Site(){
 <Route path="/docs/shortcuts" element={<Shortcuts/>}/>
 <Route path="/docs/memory-budget" element={<MemoryDoc/>}/>
 <Route path="/docs/rendering" element={<Rendering/>}/>
+  <Route path="/marketplace" element={<Marketplace/>}/>
+<Route path="/marketplace/:pluginId" element={<PluginDetail/>}/>
   <Route path="*" element={<NotFound/>}/></Routes>{notice&&<DownloadNotice platform={notice} close={()=>setNotice(null)}/>}</div>;
 }
 export default function App(){return <BrowserRouter><ErrorBoundary><Site/></ErrorBoundary></BrowserRouter>;}
