@@ -26,6 +26,8 @@ import PluginDetail from './pages/PluginDetail';
 import DeveloperCenter from './pages/DeveloperCenter';
 import DeveloperLogin from './pages/DeveloperLogin';
 import OAuthCallback from './pages/OAuthCallback';
+import PluginRegistration from './pages/PluginRegistration';
+import VersionUpload from './pages/VersionUpload';
 class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
   state={failed:false};
   static getDerivedStateFromError(){return {failed:true};}
@@ -86,6 +88,8 @@ function Site(){
 <Route path="/developer" element={<DeveloperCenter/>}/>
 <Route path="/developer/login" element={<DeveloperLogin/>}/>
 <Route path="/developer/callback" element={<OAuthCallback/>}/>
+<Route path="/developer/plugins/new" element={<PluginRegistration/>}/>
+<Route path="/developer/plugins/:pluginId/releases/new" element={<VersionUpload/>}/>
   <Route path="*" element={<NotFound/>}/></Routes>{notice&&<DownloadNotice platform={notice} close={()=>setNotice(null)}/>}</div>;
 }
 export default function App(){return <BrowserRouter><ErrorBoundary><Site/></ErrorBoundary></BrowserRouter>;}
