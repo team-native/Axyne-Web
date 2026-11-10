@@ -1,4 +1,4 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Header, Footer, Button, DocSidebar } from "../components";
 
 export default function Home() {
   return (
@@ -452,3 +452,4 @@ export default function Home() {
     </div>
   );
 }
+

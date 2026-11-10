@@ -1,4 +1,4 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Header, Footer } from "../components";
 import imgContainer from "../assets/43cf6.svg";
 import imgContainerDark from "../assets/9c07c.svg";
 
@@ -34,12 +34,12 @@ export default function DownloadComplete() {
           </p>
         </div>
         <div className="design-86" data-node-id="25:7895" data-name="Row">
-          <a href={installerUrl()} onClick={handleInstallerClick} className="design-133" data-node-id="25:7896" data-name="Button">
+          <a href="/releases?target=windows" className="design-133" data-node-id="25:7896" data-name="Button">
             <p className="design-67" data-node-id="I25:7896;20:5">
               다시 다운로드
             </p>
           </a>
-          <a href="/download?platform=portable" className="design-103" data-node-id="25:7897" data-name="Button">
+          <a href="/releases?target=portable" className="design-103" data-node-id="25:7897" data-name="Button">
             <p className="design-72" data-node-id="I25:7897;20:11">
               포터블 ZIP 받기
             </p>
@@ -101,3 +101,4 @@ export default function DownloadComplete() {
     </div>
   );
 }
+

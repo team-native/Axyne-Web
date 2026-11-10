@@ -1,4 +1,4 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Header, Footer, Button, DocSidebar } from "../components";
 
 export default function Terminal() {
   return (
@@ -36,3 +36,4 @@ export default function Terminal() {
     </div>
   );
 }
+
