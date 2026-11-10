@@ -1,13 +1,10 @@
-import { Component, useEffect, useState, type ReactNode, type MouseEvent } from 'react';
-import { BrowserRouter, Routes, Route, useLocation, useNavigate } from 'react-router-dom';
-import { DownloadNotice, startDownload, type Platform } from './components';
+import { Component, useEffect, type ReactNode, type MouseEvent } from 'react';
+import { BrowserRouter, Routes, Route, useLocation, useNavigate, Navigate } from 'react-router-dom';
 import { usePageMotion } from './usePageMotion';
 import Home from './pages/Home';
 import Features from './pages/Features';
 import Memory from './pages/Memory';
 import Download from './pages/Download';
-import DownloadComplete from './pages/DownloadComplete';
-import MacComplete from './pages/MacComplete';
 import NotFound from './pages/NotFound';
 import ServerError from './pages/ServerError';
 import Introduction from './pages/Introduction';
@@ -25,9 +22,10 @@ import Marketplace from './pages/Marketplace';
 import PluginDetail from './pages/PluginDetail';
 import DeveloperCenter from './pages/DeveloperCenter';
 import DeveloperLogin from './pages/DeveloperLogin';
-import OAuthCallback from './pages/OAuthCallback';
 import PluginRegistration from './pages/PluginRegistration';
 import VersionUpload from './pages/VersionUpload';
+import Releases from './pages/Releases';
+import OAuthCallback from './pages/OAuthCallback';
 class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
   state={failed:false};
   static getDerivedStateFromError(){return {failed:true};}
@@ -36,21 +34,12 @@ class ErrorBoundary extends Component<{children:ReactNode},{failed:boolean}> {
 function Site(){
   const location=useLocation();
   const navigate=useNavigate();
-  const [notice,setNotice]=useState<Platform | null>(null);
   const motionRoot=usePageMotion(location.pathname);
   useEffect(()=>{
     document.title='Axyne';
-    setNotice(null);
     if(!location.hash) window.scrollTo(0,0);
     else requestAnimationFrame(()=>document.getElementById(location.hash.slice(1))?.scrollIntoView());
   },[location.pathname,location.search]);
-  useEffect(()=>{
-    const show=(event:Event)=>setNotice((event as CustomEvent<Platform>).detail);
-    const escape=(event:KeyboardEvent)=>{if(event.key==='Escape')setNotice(null);};
-    window.addEventListener('download-unavailable',show);
-    window.addEventListener('keydown',escape);
-    return ()=>{window.removeEventListener('download-unavailable',show);window.removeEventListener('keydown',escape);};
-  },[]);
   function onDownloadClick(event:MouseEvent<HTMLDivElement>){
     if(event.button!==0||event.ctrlKey||event.metaKey||event.shiftKey||event.altKey) return;
     const link=(event.target as Element).closest<HTMLAnchorElement>('a[href]');
@@ -61,15 +50,15 @@ function Site(){
     if(!platform) return;
     event.preventDefault();
     event.stopPropagation();
-    if(startDownload(platform)&&platform!=='portable') navigate(target.pathname);
+    navigate(`/releases?target=${platform}`);
   }
   return <div className="app motion-ready" ref={motionRoot} onClickCapture={onDownloadClick}><div className="scroll-progress" aria-hidden="true"/><Routes>
   <Route path="/" element={<Home/>}/>
 <Route path="/features" element={<Features/>}/>
 <Route path="/memory-budget" element={<Memory/>}/>
-<Route path="/download" element={<Download/>}/>
-<Route path="/download/complete" element={<DownloadComplete/>}/>
-<Route path="/download/complete/macos" element={<MacComplete/>}/>
+  <Route path="/download" element={new URLSearchParams(location.search).get('platform')==='portable'?<Navigate to="/releases?target=portable" replace/>:<Download/>}/>
+<Route path="/download/complete" element={<Navigate to="/releases?target=windows" replace/>}/>
+<Route path="/download/complete/macos" element={<Navigate to="/releases?target=macos" replace/>}/>
 <Route path="/404" element={<NotFound/>}/>
 <Route path="/500" element={<ServerError/>}/>
 <Route path="/docs" element={<Introduction/>}/>
@@ -83,14 +72,16 @@ function Site(){
 <Route path="/docs/shortcuts" element={<Shortcuts/>}/>
 <Route path="/docs/memory-budget" element={<MemoryDoc/>}/>
 <Route path="/docs/rendering" element={<Rendering/>}/>
-  <Route path="/marketplace" element={<Marketplace/>}/>
+<Route path="/marketplace" element={<Marketplace/>}/>
 <Route path="/marketplace/:pluginId" element={<PluginDetail/>}/>
 <Route path="/developer" element={<DeveloperCenter/>}/>
 <Route path="/developer/login" element={<DeveloperLogin/>}/>
 <Route path="/developer/callback" element={<OAuthCallback/>}/>
 <Route path="/developer/plugins/new" element={<PluginRegistration/>}/>
 <Route path="/developer/plugins/:pluginId/releases/new" element={<VersionUpload/>}/>
-  <Route path="*" element={<NotFound/>}/></Routes>{notice&&<DownloadNotice platform={notice} close={()=>setNotice(null)}/>}</div>;
+<Route path="/releases" element={<Releases/>}/>
+  <Route path="*" element={<NotFound/>}/></Routes></div>;
 }
 export default function App(){return <BrowserRouter><ErrorBoundary><Site/></ErrorBoundary></BrowserRouter>;}
+
 

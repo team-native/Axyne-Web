@@ -1,4 +1,4 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Header, Footer, Button, DocSidebar } from "../components";
 
 export default function Editor() {
   return (
@@ -64,3 +64,4 @@ export default function Editor() {
     </div>
   );
 }
+

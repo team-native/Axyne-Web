@@ -1,4 +1,4 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Header, Footer, Button } from "../components";
 import imgContainer from "../assets/43cf6.svg";
 import imgContainerDark from "../assets/9c07c.svg";
 
@@ -34,8 +34,8 @@ export default function MacComplete() {
           </p>
         </div>
         <div className="design-86" data-node-id="25:7380" data-name="Row">
-          <Button  className="design-169" label="다시 다운로드"  href="download" />
-          <Button  className="design-170" label="포터블 ZIP 받기" style="Secondary"  href="/download?platform=portable" />
+          <Button  className="design-169" label="다시 다운로드"  href="/releases?target=macos" />
+          <Button  className="design-170" label="포터블 ZIP 받기" style="Secondary"  href="/releases?target=portable" />
         </div>
         <div className="design-152" data-node-id="25:7383" data-name="Next Steps">
           <p className="design-171" data-node-id="25:7384">
@@ -93,3 +93,4 @@ export default function MacComplete() {
     </div>
   );
 }
+

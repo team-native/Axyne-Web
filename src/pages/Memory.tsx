@@ -1,4 +1,4 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Header, Footer, Button, DocSidebar } from "../components";
 import imgDot from "../assets/e9ecc.svg";
 import imgDot1 from "../assets/f3b91.svg";
 import imgDot2 from "../assets/96285.svg";
@@ -163,3 +163,4 @@ export default function Memory() {
     </div>
   );
 }
+

@@ -1,4 +1,4 @@
-import { Header, Footer, Button, DocSidebar, installerUrl, handleInstallerClick } from "../components";
+import { Header, Footer } from "../components";
 
 export default function Download() {
   return (
@@ -160,3 +160,4 @@ export default function Download() {
     </div>
   );
 }
+
