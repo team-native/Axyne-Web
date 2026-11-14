@@ -1,6 +1,13 @@
 import { useLayoutEffect, useRef } from 'react';
 
 const ease = 'cubic-bezier(.3,0,0,1)';
+// 모션 지속 시간. 전체를 한 번에 조절하려면 이 값들을 바꾼다.
+// 등장 transition 자체의 길이는 styles.css의 --reveal-duration에 있다.
+const revealStagger = 130;      // 형제 요소 사이의 등장 간격 (ms)
+const revealStaggerSteps = 5;   // stagger가 누적되는 최대 형제 수
+const shapeDuration = 1400;     // [data-name="Shape"] 가로 확장
+const barDuration = 2600;       // [data-name="Stacked Bar"] 전체 길이
+const countDuration = 1900;     // [data-name="Stats"] 숫자 카운트업
 const reveals = '[data-name="Hero"] > *, [data-name="Page Header"] > *, [data-name="Grid"] > *, [data-name="Feature Grid"] > div > *, [data-name="Platform Cards"] > *, [data-name="Download Cards"] > *, [data-name="Details"] > *, [data-name="Article"] > *, [data-name="Content"] > h1, [data-name="Next Steps"] > *, [data-name="CTA Band"] > *, [data-name="Download CTA"] > *';
 
 export function usePageMotion(route: string) {
@@ -49,7 +56,7 @@ export function usePageMotion(route: string) {
       const final = +number[0], decimals = number[0].includes('.') ? 1 : 0, start = performance.now();
       target.textContent = original.replace(number[0], (0).toFixed(decimals));
       function tick(time: number) {
-        const fraction = Math.min(1, (time - start) / 1200);
+        const fraction = Math.min(1, (time - start) / countDuration);
         target.textContent = original.replace(number![0], (final * (1 - Math.pow(1 - fraction, 3))).toFixed(decimals));
         if (fraction < 1 && !preference.matches) schedule(tick);
         else target.textContent = original;
@@ -60,20 +67,20 @@ export function usePageMotion(route: string) {
       for (const entry of entries) {
         if (!entry.isIntersecting) continue;
         const target = entry.target as HTMLElement;
-        const delay = Math.min(3, Array.from(target.parentElement?.children || []).indexOf(target)) * 80;
+        const delay = Math.min(revealStaggerSteps, Array.from(target.parentElement?.children || []).indexOf(target)) * revealStagger;
         if (target.matches('[data-name="Stacked Bar"]')) {
           const track = target.getBoundingClientRect();
           Array.from(target.children).forEach(child => {
             const segment = child as HTMLElement;
             const bounds = segment.getBoundingClientRect();
-            const duration = 1600 * parseFloat(getComputedStyle(segment).width) / track.width;
-            const delay = 1600 * (bounds.left - track.left) / track.width;
+            const duration = barDuration * parseFloat(getComputedStyle(segment).width) / track.width;
+            const delay = barDuration * (bounds.left - track.left) / track.width;
             segment.classList.add('motion-visible');
             animate(segment, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration, easing: 'linear', delay, fill: 'backwards' });
           });
         } else if (target.matches('[data-name="Shape"]')) {
           target.classList.add('motion-visible');
-          animate(target, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: 900, easing: ease, delay, fill: 'backwards' });
+          animate(target, [{ transform: 'scaleX(0)' }, { transform: 'scaleX(1)' }], { duration: shapeDuration, easing: ease, delay, fill: 'backwards' });
         } else if (target.matches('[data-name="Stats"]')) {
           target.querySelectorAll<HTMLElement>(':scope > div > p:first-child').forEach(count);
           target.classList.add('revealed');
